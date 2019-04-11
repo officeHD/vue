@@ -1,0 +1,42 @@
+{
+    "forInsuredPerson": [{
+            "value": "00",
+            "label": "配偶"
+        },
+        {
+            "value": "01",
+            "label": "父母"
+        },
+        {
+            "value": "02",
+            "label": "子女"
+        },
+        {
+            "value": "04",
+            "label": "本人"
+        }
+
+    ],
+    "CertiType": [{
+            "label": "身份证",
+            "value": "0"
+        },
+        {
+            "label": "护照",
+            "value": "1"
+        },
+        {
+            "label": "军人证（军官证）",
+            "value": "2"
+        },
+        {
+            "label": "港澳通行证",
+            "value": "6"
+        },
+        {
+            "label": "台胞证",
+            "value": "9"
+        }
+
+    ]
+}

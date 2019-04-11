@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+     
+    <!-- <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=0.5,maximum-scale=0.5,minimum-scale=0.5"> -->
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1137281_mtm42igtzz.css">
+   
+    <title>民盛保代</title>
+  </head>
+  <body>
+    <div id="app">
+    	<router-view></router-view>
+    </div>
+  </body>
+  <script type="text/javascript">
+    // 判断是女性百万险还是住院保
+
+    // sessionStorage.setItem("varitayCode", "woman"); 
+    sessionStorage.setItem("varitayCode", "common"); 
+    console.log(sessionStorage.varitayCode)
+
+    //判断是否有制作计划书这栏
+    
+    // sessionStorage.setItem("typeCode", "longInsu"); 
+    sessionStorage.setItem("typeCode", "shortInsu");
+    console.log(sessionStorage.typeCode)
+  </script>
+</html>
