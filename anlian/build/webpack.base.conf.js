@@ -4,6 +4,14 @@ var utils = require('./utils')
 var projectRoot = path.resolve(__dirname, '../')
 const pxtorem = require('postcss-pxtorem');
 var env = process.env.NODE_ENV
+
+ 
+//path 是 NodeJS工具模块，用来处理文件路径
+function resolve (dir) {
+return path.join(__dirname, '..', dir)
+}
+
+
     // check env & config/index.js to decide weither to enable CSS Sourcemaps for the
     // various preprocessor loaders added to vue-loader at the end of this file
 var cssSourceMapDev = (env === 'development' && config.dev.cssSourceMap)
@@ -23,6 +31,7 @@ const webpackConfig =  {
         extensions: ['', '.js', '.vue', '.less', '.css', '.scss'],
         fallback: [path.join(__dirname, '../node_modules')],
         alias: {
+            '@': resolve('src'),
             'vue$': 'vue/dist/vue.common.js',
             'src': path.resolve(__dirname, '../src'),
             'assets': path.resolve(__dirname, '../src/assets'),
