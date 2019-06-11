@@ -1,0 +1,99 @@
+<template>
+  <div>
+    <div class="p20" v-if="userType=='1'">
+      <BlankLi title="省市镇区">33333</BlankLi>
+      <BlankLi title="学校名称">33333</BlankLi>
+      <BlankLi title="账号">33333</BlankLi>
+      <BlankLi title="密码">33333</BlankLi>
+    </div>
+    <div class="p20" v-if="userType=='2'">
+      <BlankLi title="手机号码">33333</BlankLi>
+      <BlankLi title="验证码">33333</BlankLi>
+    </div>
+    <div class="btnBox">
+      <button class="btnPrimary" @click="bindTeacher" v-if="userType=='1'" >立即绑定</button>
+      <button class="btnPrimary" v-if="userType=='2'" >登录</button>
+    </div>
+  </div>
+</template>
+
+<script>
+import { mapState, mapActions } from "vuex";
+import BlankLi from "@/components/BlankLi";
+import { teacherbd } from "@/config/api";
+
+
+export default {
+  computed: {
+    ...mapState({
+      userType: state => state.userType
+    })
+  },
+  components: {
+    BlankLi
+  },
+  methods: {
+    ...mapActions(["changeNewsType"]),
+    onItemClick(item) {
+      console.log(item);
+    },
+    bindTeacher(){
+      teacherbd({ad_num:"admin",ad_pass:"123456",open_id:"111"},res=>{
+        console.log(res)
+        if(res.status.toString()==="200"){
+          this.$vux.toast.text('绑定成功', 'middle')
+        }else{
+          this.$vux.toast.text(res.data, 'top')
+        }
+      })
+    }
+  }
+};
+</script>
+
+<style lang="less" scoped>
+.title{
+    padding: 20px;
+    color: #999999;
+}
+.p20 {
+  padding: 0 20px;
+  background: #ffffff;
+}
+.btnBox {
+  padding: 40px 20px;
+  width: 100%;
+}
+
+.btnPrimary,
+.btnDefault {
+  height: 90px;
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 14px;
+  padding-right: 14px;
+  box-sizing: border-box;
+  font-size: 32px;
+  text-align: center;
+  text-decoration: none;
+  line-height: 90px;
+  border-radius: 5px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  overflow: hidden;
+  width: 100%;
+  border-width: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  margin: 20px 0;
+}
+.btnPrimary {
+  color: #ffffff;
+  background-color: #0090ed;
+}
+.btnDefault {
+  background-color: #e6e6e6;
+  color: #e5222a;
+}
+</style>
